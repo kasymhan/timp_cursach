@@ -1,0 +1,30 @@
+{% extends 'blog/profile.html' %}
+{% block title %}
+    Редактирования профиля
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class=" justify-content-center ">
+            <form class="form" method="post" action="{% url 'redirect_ac' %}">
+                {% csrf_token %}
+                {% for i in user %}
+                <div class="input-group mb-3 ">
+                    <input class="block6" type="text" name="name" value="{{ i.Name }}">
+                </div>
+                <div class="input-group">
+                    <input class="block6" type="text" name="login" value="{{ i.login }}">
+                </div>
+                <div class="input-group">
+                    <input class="block6" type="text" name="password" placeholder="Пароль">
+                </div>
+                <div class="input-group">
+                    <input class="block6" type="text" name="password_return" placeholder="Повторите пароль">
+                </div>
+                <div class="input-group center">
+                    <input class="block8" type="submit" style="background-color:#5bbad5">
+                </div>
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+{% endblock %}

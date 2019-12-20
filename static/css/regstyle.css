@@ -1,0 +1,43 @@
+		.user_card {
+			margin-left: 6.15%;
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			display: flex;
+			flex-direction: column;
+			border-radius: 5px;
+
+		}
+		.form-container {
+			width:56%;
+			
+		}
+		.login_btn {
+			width: 56%;
+			height: 40px;
+			background: #5bbad5 !important;
+			color: white !important;
+		}
+		.login_btn:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.login_container {
+			padding: 0 2rem;
+		}
+		.input-group{
+			width:56%;
+			height: 50px;
+			margin-bottom: 20px;
+		}
+		.input-group-text {
+			background: #c0392b !important;
+			color: white !important;
+			border: 0 !important;
+			border-radius: 0.25rem 0 0 0.25rem !important;
+		}
+		.input_user,
+		.input_pass:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}

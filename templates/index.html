@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    {% load static %}
+    <title>Главная - ХанаКарама</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/mainstyle.css' %}" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-image: url("{% static 'img/back.jpg' %}")
+        }
+    </style>
+</head>
+
+
+<body>
+
+<!-- шапка -->
+<div class="container">
+    <div class="block1">
+        <div class="col-lg-13">
+            <nav class="navbar navbar-default" role="navigation" style="background-color:#5bbad5">
+                <a class="navbar-brand" href="{% url 'site' %}"><img class="logopng" src="{% static 'img/hana.png' %}"></a>
+
+                <form id="search" action="{% url 'search' %}" method="post">
+                    {% csrf_token %}
+                    <input type="text" class="block2" id="search_item" placeholder="Поиск по сайту" name="search">
+                    <input type="submit" value="Поиск" class="block3">
+                    {% if  form.errors %}
+
+                    {% endif %}
+                </form>
+                <div class="in_put">
+                    {% block t %}
+                        {% if user %}
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#ffffff;">Вход
+                                        <b class="caret"></b></a>
+                                    <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <form id="login" method="post" action="{% url 'auth1' %}">
+                                                        {% csrf_token %}
+                                                        <div class="form-group">
+                                                            <input type="text" name="login" placeholder="Логин"
+                                                                   class="rounded">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="password" name="password" placeholder="Пароль"
+                                                                   class="rounded">
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label><input type="checkbox"> Запомнить меня</label>
+                                                        </div>
+                                                        {% if  form.errors %}
+                                                            <div class="alert alert-danger" role="alert">
+                                                                Нет такого пользователя
+                                                            </div>
+                                                        {% endif %}
+                                                        <div class="form-group">
+                                                            <input type="submit" value="Вход"
+                                                                   style="background-color:#5bbad5"
+                                                                   class="rounded">
+                                                        </div>
+                                                        <a href="{% url 'registration' %}">Регистрация</a>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        {% endif %}
+                    {% endblock %}
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+{% block content %}
+    <p class="theader"><b>Актуальные объявления</b></p>
+    <div class=" block7">
+        <table class="table">
+            <tbody>
+            {% block search %}
+                {% for i in product %}
+                    <tr class="gdsitem">
+                        <th scope="col"><img class="itemimg" src="{% static 'img/1.jpg' %}"></th>
+                        <th scope="col">
+                            <submit name="{{ i.id }}"><a href="{% url 'anouc' pk=i.id %}">{{ i.Name }}</a></submit>
+                        </th>
+                        <th scope="col" class="lprice">{{ i.price }} рублей</th>
+                    </tr>
+                {% endfor %}
+            {% endblock %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+<script>
+    if ({{ b }}==1)
+    {
+        $('div.in_put').html('<ul class="nav navbar-nav navbar-right"> ' +
+            '<li class="dropdown">' +
+            '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Профиль<b class="caret"></b></a>' +
+            '<ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">' +
+            '<li>' +
+            '<div class="row">' +
+            '<div class="col-md-12">' +
+            '<form id="log">' +
+            '<a href="{% url 'profile' %}">Личный кабинет</a>' +
+            '<div><a href="{% url 'redirect_ac' %}">Редактировать профиль</a></div>' +
+            '<div><a href="{% url 'logout' %}">Выход</a></div>' +
+            '</form>' +
+            '</div>' +
+            '</div>' +
+            '</li>' +
+            '</ul>' +
+            '</li>' +
+            '</ul>')
+    }
+</script>
+</body>
+</html>

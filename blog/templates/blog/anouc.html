@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+        <!-- Wrapper for slides -->
+        <div class="block0">
+        <div class="thumbnail">
+            <img src="{% static 'img/1.jpg'%}" class="gddescription" alt="">
+            <div class="caption">
+                <h4>{{ an.Name }}</h4>
+                <h5 > Номер телефона: Number</h5>
+                <h5> Цена - {{ an.price }}</h5>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="col-md-12 product-info">
+            <ul id="myTab" class="nav nav-tabs nav_tabs">
+
+                <li class="active"><a href="#service-one" data-toggle="tab">Описание</a></li>
+
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="service-one">
+
+                    <section class="container product-info" style="color: #1600dc">
+						Описания услуги <br>{{an.inform }}
+                    </section>
+
+                </div>
+                <div class="tab-pane fade" id="service-two">
+
+                    <section class="container">
+
+                    </section>
+
+                </div>
+                <div class="tab-pane fade" id="service-three">
+
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
+{% endblock %}

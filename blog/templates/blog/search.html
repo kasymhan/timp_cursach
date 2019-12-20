@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Поиск
+{% endblock %}
+{% block search %}
+    {% for i in product %}
+        <tr class="gdsitem">
+            <th scope="col"><img class="itemimg" src="{{ i.file }}"></th>
+            <th scope="col">
+                <submit name="{{ i.id }}"><a href="{% url 'anouc' pk=i.id %}">{{ i.Name }}</a></submit>
+            </th>
+            <th scope="col" class="lprice">{{ i.price }} рублей</th>
+        </tr>
+    {% endfor %}
+{% endblock %}

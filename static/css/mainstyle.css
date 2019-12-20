@@ -1,0 +1,119 @@
+.block1 {
+            box-sizing:border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            max-height: 100%;
+        }
+.block2{
+    position: absolute;
+	top: 10%;
+	left: 22%;
+	right: 22%;
+	width: 56%;
+	height: 70%;
+	border-radius: 15px;
+	border: 0px;
+	font-style: italic;
+    }
+.block3{
+    position: absolute;
+    top: 10%;
+    left: 72%;
+	right: 22%;
+    width: 10%;
+	height: 70%;
+	text-align: center;
+	background-color:#ffffff;
+	border-radius: 15px;
+	border: 0px;
+    }
+.block3:hover{
+	background-color:#5bbad5;
+	color:#ffffff;
+}
+.block7{
+    position: absolute;
+    overflow-y: auto;
+	margin-left:10%;
+    width: 80%;
+    height: 80%;
+    }
+.table{border-radius: 10px;}
+.itemimg{
+	height: 95px;
+	max-width: 95px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 100%;
+	}
+.nullblock{
+		position: relative;
+		height: 220px;}
+.logopng{
+	position: absolute;
+    vertical-align: center;
+	margin-top:-0.6%;
+	max-height: 90%;
+	max-width: 15%;
+	}
+.user_card{position: absolute;}
+ .block6{
+     margin: 10px;
+     border-radius: 5px;
+     height: 50px;
+     top: 30px;
+     left: 300px;
+     width: 1000px;
+	 border-radius:15px;
+	 border: 0px;
+	 text-align: center;
+	 font-style: italic;
+	 box-shadow: 3px 4px 5px #5bbad5;;
+ }
+ .dat{
+	left: 550px;
+	width: 500px;
+}
+.block8{
+    margin: 10px;
+    border-radius: 5px;
+    height: 50px;
+    top: 30px;
+    left: 300px;
+    width: 1000px;
+	border-radius:15px;
+	color:#ffffff;
+	border: 0px;
+	#box-shadow: 3px 4px 5px #5bbad5;;
+}
+.container{margin-bottom:15%;
+			margin-top: 0%;}
+.nav, .navbar-nav, .navbar-right{margin-left:85%;}
+
+.gdsitem_2{
+	background-color:rgba(91, 186, 213, 0.3);
+
+}
+.dropdown-toggle:visited{background-color:#ffffff;}
+.theader{
+	width: 80%;
+	margin-left:10%;
+	font-size: 40px;
+	font-style: oblique;
+	color: #ffffff;
+	background-color:#5bbad5;;
+	border-radius:15px;
+	text-align: center;
+}
+.table{background-color:#ffffff;}
+.rounded{
+	width:100%;
+	border-radius: 15px;
+	border:0px;
+	background-color:rgba(91, 186, 213, 0.3);
+	text-align: center;
+	font-style: italic;
+	color:#ffffff;
+}

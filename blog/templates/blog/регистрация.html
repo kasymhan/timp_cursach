@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% block title %}
+    регистрация
+{% endblock %}
+{% block content %}
+    <!-- регистрация -->
+    <div class="container">
+        <div class=" justify-content-center ">
+            <form method="post" action="{% url 'registration' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.Name }}
+                {{ form.login }}
+                {{ form.Email }}
+                {{ form.Phone }}
+                {{ form.Password }}
+                {{ form.Password_return }}
+                {{ form.file }}
+                {% if form.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ form.errors }}
+                    </div>
+                {% endif %}
+                <input class="block8" type="submit" style="background-color:#5bbad5">
+            </form>
+        </div>
+    </div>
+{% endblock %}

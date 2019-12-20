@@ -1,0 +1,179 @@
+{% extends 'index.html' %}
+{% block t %}
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Профиль<b class="caret"></b></a>
+            <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+                <li>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form id="log">
+                                <a href="{% url 'profile' %}">Личный кабинет</a>
+                                <div><a href="{% url 'redirect_ac' %}">Редактировать профиль</a></div>
+                                <div><a href="{% url 'logout' %}">Выход</a></div>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+{% endblock %}
+{% block content %}
+    <style>
+
+
+        #main {
+            background-color: #f2f2f2;
+            padding: 20px;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            -ms-border-radius: 4px;
+            -o-border-radius: 4px;
+            border-radius: 4px;
+            border-bottom: 4px solid #ddd;
+        }
+
+        #real-estates-detail #author img {
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            -ms-border-radius: 100%;
+            -o-border-radius: 100%;
+            border-radius: 100%;
+            border: 5px solid #ecf0f1;
+            margin-bottom: 10px;
+        }
+
+        #real-estates-detail .sosmed-author i.fa {
+            width: 30px;
+            height: 30px;
+            border: 2px solid #bdc3c7;
+            color: #bdc3c7;
+            padding-top: 6px;
+            margin-top: 10px;
+        }
+
+        .panel-default .panel-heading {
+            background-color: #fff;
+        }
+
+        #real-estates-detail .slides li img {
+            height: 450px;
+        }
+    </style>
+    <div id="page">
+        <div id="main">
+            <div class="row" id="real-estates-detail">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <header class="panel-title">
+                                <div class="text-center">
+                                    <strong>{{ name.Name }}</strong>
+                                </div>
+                            </header>
+                        </div>
+                        <div class="panel-body">
+                            <div class="text-center" id="author">
+                                <img src="https://bootstraptema.ru/snippets/icons/2017/smiles/29.png" style="width: 256px"
+                                     class="img-circle">
+                                <h3>{{ form.name }}</h3>
+                                <p class="sosmed-author">
+                                    <a href="https://vk.com/"><img
+                                            src="https://pngicon.ru/file/uploads/vk-64x64.png" alt="Значок вк" style="width: 32px"></a>
+                                    <a href="https://pngicon.ru/img-google-and-545.html" ><img
+                                            src="https://pngicon.ru/file/uploads/google-plus-64x64.png" alt="Google +" style="width: 32px"></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-xs-12">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <a type="button" class="btn btn-primary" href="{% url 'create_announcement' %}">Добавить
+                                обьявления</a>
+                            <div id="myTabContent" class="tab-content">
+                                <div class="tab-pane fade active in" id="detail">
+                                    <h4>Объявления: </h4>
+                                    <table class="table table-th-block">
+                                        <tbody>
+                                        {% if notes %}
+                                            {% for i in notes %}
+                                                <tr class="gdsitem">
+                                                    <form action="{% url 'delete_annoucement' %}" method="post">
+                                                        {% csrf_token %}
+                                                        <th scope="col">{{ i.Name }}</th>
+                                                        <th scope="col">{{ i.date }}</th>
+                                                        <th>
+                                                            <button name="id12" value="{{ i.id }}"
+                                                                    class="btn btn-primary" style="background: #c0392b">
+                                                                Удалить обьявления
+                                                            </button>
+                                                            <button name="redirect" value="{{ i.id }}"
+                                                                    class="btn btn-primary"
+                                                                    style="background: chartreuse">
+                                                                Редактировать обьявления<
+                                                            </button>
+                                                        </th>
+                                                    </form>
+                                                </tr>
+                                            {% endfor %}
+                                        {% endif %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="contact">
+                                    <p></p>
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label>Ваше имя</label>
+                                            <input type="text" class="form-control rounded"
+                                                   placeholder="Укажите Ваше Имя">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Ваш телефон</label>
+                                            <input type="text" class="form-control rounded"
+                                                   placeholder="(+7)(095)123456">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>E-mail адрес</label>
+                                            <input type="email" class="form-control rounded" placeholder="Ваш Е-майл">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> Согласен с условиями
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Текст Вашего сообщения</label>
+                                            <textarea class="form-control rounded" style="height: 100px;"></textarea>
+                                            <p class="help-block">Текст сообщения будет отправлен пользователю</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success" data-original-title=""
+                                                    title="">Отправить
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        #page {
+            position: absolute;
+            top: 50px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+{% endblock %}
